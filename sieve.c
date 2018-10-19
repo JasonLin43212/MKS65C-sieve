@@ -2,6 +2,15 @@
 #include <stdlib.h>
 #include <math.h>
 
+void print_ints(char * c, int size) {
+  int current = 0;
+  while (current < size) {
+    printf("%d: %d\n",current+2,*c);
+    c++;
+    current++;
+  }
+}
+
 int sieve(double n) {
   int array_size = 1;
   if (n>5000) {
@@ -10,26 +19,22 @@ int sieve(double n) {
   else {
     array_size = (int)(1.3*n*log(n)+10);
   }
-  printf("%d",array_size);
-  char * nums = malloc(array_size);
+  char * nums = calloc(array_size,sizeof(char));
 
   int current_n = 0;
-  int current_num = 2;
+  int current_num = 1;
   while (current_n != n) {
-    printf("%d\n%d\n",current_num,current_n);
-    if (!nums) {
-      printf("found prime\n");
-      current_n++;
-      char * temp = nums + current_num;
+    current_num++;
+    if (!(*(nums+current_num))){
       int temp_index = 2*current_num;
-      while (temp_index < array_size) {
-        *temp = 1;
-        temp += current_num;
+      while (temp_index < array_size){
+        char * temp = nums+temp_index;
+        if (!(*temp)){
+          *temp = 1;        }
         temp_index += current_num;
       }
+      current_n++;
     }
-    current_num++;
   }
-
-  return current_num-1;
+  return current_num;
 }
