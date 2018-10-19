@@ -2,19 +2,15 @@
 #include <stdlib.h>
 #include <math.h>
 
-int sieve(double n) {
+int sieve(int targetPrime) {
   int array_size;
-  if (n>5000) {
-    array_size = (int)(0.575*n*log(n));
-  }
-  else {
-    array_size = (int)(0.65*n*log(n)+5);
-  }
+  if (targetPrime>5000) {array_size = (int)(0.575*targetPrime*log((double)targetPrime));}
+  else {array_size = (int)(0.65*targetPrime*log((double)targetPrime)+5);}
   char * nums = calloc(array_size,sizeof(char));
-  if (n != 1){
+  if (targetPrime != 1){
     int current_n = 1;
     int current_num = 0;
-    while (current_n != n) {
+    while (current_n != targetPrime) {
       current_num++;
       if (!*(nums+current_num)){
         if (current_num * current_num < array_size){

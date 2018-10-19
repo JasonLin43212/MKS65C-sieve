@@ -1,1 +1,1 @@
-int sieve(double);
+int sieve(int targetPrime);
