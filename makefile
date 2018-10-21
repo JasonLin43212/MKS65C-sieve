@@ -9,3 +9,9 @@ main.o: main.c sieve.h
 
 run:
 	./a.out $(args)
+
+bit: bit.o sieve.h
+	gcc bit.o main.o -lm
+
+bit.o: bit.c sieve.h
+	gcc -c bit.c -lm
