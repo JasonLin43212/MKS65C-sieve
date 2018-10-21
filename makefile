@@ -15,3 +15,9 @@ bit: bit.o sieve.h
 
 bit.o: bit.c sieve.h
 	gcc -c bit.c -lm
+
+test: othertest.o sieve.h
+	gcc othertest.o main.o -lm
+
+othertest.o: othertest.c sieve.h
+	gcc -c othertest.c -lm

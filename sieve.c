@@ -9,8 +9,9 @@ int sieve(int targetPrime) {
   char * nums = calloc(array_size,sizeof(char));
   if (targetPrime != 1){
     int current_n = 1;
-    int current_num;
-    for (current_num = 1; current_n != targetPrime; current_num++) {
+    int current_num = 0;
+    while (current_n != targetPrime) {
+      current_num++;
       if (!*(nums+current_num)){
         if (current_num * current_num < array_size){
           int temp_index = current_num + current_num + current_num + 1;
